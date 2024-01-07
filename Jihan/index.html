@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #countdown {
+            font-size: 36px;
+            color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+    <title>Countdown</title>
+</head>
+<body>
+
+<script>
+    // Tanggal target
+    var targetDate = new Date("January 8, 2024 00:00:00").getTime();
+
+    // Update countdown setiap 1 detik
+    var x = setInterval(function() {
+        // Waktu saat ini
+        var now = new Date().getTime();
+
+        // Selisih waktu antara sekarang dan target
+        var distance = targetDate - now;
+
+        // Perhitungan waktu
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Tampilkan countdown jika belum tanggal 8 Januari
+        if (distance > 0) {
+            document.body.style.backgroundColor = "black";
+            document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+            + minutes + "m " + seconds + "s ";
+        } else {
+            // Tanggal sudah lewat, lakukan aksi setelah tanggal 8 Januari di sini
+            window.location.href = 'j.html'
+        }
+    }, 1000);
+</script>
+
+<div id="countdown"></div>
+
+</body>
+</html>
